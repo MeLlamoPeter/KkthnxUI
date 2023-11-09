@@ -57,6 +57,7 @@ C["Media"] = {
 		WGlass = mediaFolder .. "Statusbars\\Wglass.tga",
 		Water = mediaFolder .. "Statusbars\\Water.tga",
 		ZorkUI = mediaFolder .. "Statusbars\\ZorkUI.tga",
+		Eltreum = mediaFolder .. "Statusbars\\Eltreum.tga",
 	},
 }
 

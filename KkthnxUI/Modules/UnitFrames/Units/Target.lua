@@ -174,7 +174,9 @@ function Module:CreateTarget()
 		local Castbar = CreateFrame("StatusBar", "oUF_CastbarTarget", self)
 		Castbar:SetStatusBarTexture(K.GetTexture(C["General"].Texture))
 		Castbar:SetFrameLevel(10)
-		Castbar:SetSize(C["Unitframe"].TargetCastbarWidth, C["Unitframe"].TargetCastbarHeight)
+		Castbar:SetHeight(C["Unitframe"].PlayerPowerHeight)
+		Castbar:SetPoint("TOPLEFT", Health, "BOTTOMLEFT", 0, -6)
+		Castbar:SetPoint("TOPRIGHT", Health, "BOTTOMRIGHT", 0, -6)
 		Castbar:CreateBorder()
 		Castbar.castTicks = {}
 
@@ -190,13 +192,13 @@ function Module:CreateTarget()
 		shield:SetPoint("TOP", Castbar, "CENTER", 0, 6)
 		Castbar.Shield = shield
 
-		local timer = K.CreateFontString(Castbar, 12, "", "", false, "RIGHT", -3, 0)
-		local name = K.CreateFontString(Castbar, 12, "", "", false, "LEFT", 3, 0)
+		local timer = K.CreateFontString(Castbar, 8, "", "", false, "RIGHT", -3, 0)
+		local name = K.CreateFontString(Castbar, 8, "", "", false, "LEFT", 3, 0)
 		name:SetPoint("RIGHT", timer, "LEFT", -5, 0)
 		name:SetJustifyH("LEFT")
 
 		Castbar.Icon = Castbar:CreateTexture(nil, "ARTWORK")
-		Castbar.Icon:SetSize(Castbar:GetHeight(), Castbar:GetHeight())
+		Castbar.Icon:SetSize(Castbar:GetHeight()*2, Castbar:GetHeight()*2)
 		Castbar.Icon:SetPoint("BOTTOMRIGHT", Castbar, "BOTTOMLEFT", -6, 0)
 		Castbar.Icon:SetTexCoord(K.TexCoords[1], K.TexCoords[2], K.TexCoords[3], K.TexCoords[4])
 
@@ -222,11 +224,6 @@ function Module:CreateTarget()
 		Castbar.PostCastInterruptible = Module.PostUpdateInterruptible
 		Castbar.CreatePip = Module.CreatePip
 		Castbar.PostUpdatePip = Module.PostUpdatePip
-
-		local mover = K.Mover(Castbar, "Target Castbar", "TargetCB", { "BOTTOM", UIParent, "BOTTOM", 0, 342 }, Castbar:GetHeight() + Castbar:GetWidth() + 6, Castbar:GetHeight())
-		Castbar:ClearAllPoints()
-		Castbar:SetPoint("RIGHT", mover)
-		Castbar.mover = mover
 
 		self.Castbar = Castbar
 	end

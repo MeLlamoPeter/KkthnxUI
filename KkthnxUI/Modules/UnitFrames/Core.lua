@@ -432,7 +432,7 @@ function Module:CreateClassPower(self)
 		barWidth, barHeight = C["Nameplate"].PlateWidth, C["Nameplate"].PlateHeight - 2
 		barPoint = { "CENTER", self }
 	else
-		barWidth, barHeight = C["Unitframe"].PlayerHealthWidth, 14
+		barWidth, barHeight = C["Unitframe"].PlayerHealthWidth, C["Unitframe"].PlayerPowerHeight
 		barPoint = { "BOTTOMLEFT", self, "TOPLEFT", 0, 6 }
 	end
 

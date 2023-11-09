@@ -49,11 +49,7 @@ local function ColorPercent(value)
 end
 
 local function ValueAndPercent(cur, per)
-	if per < 100 then
-		return K.ShortValue(cur) .. " - " .. ColorPercent(per)
-	else
-		return K.ShortValue(cur)
-	end
+	return K.ShortValue(cur)
 end
 
 local function GetUnitHealthPerc(unit)
